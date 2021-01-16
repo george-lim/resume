@@ -21,10 +21,24 @@ jobs:
       uses: actions/checkout@v2
     - name: Strip target version prefix
       run: echo TARGET_VERSION=${TARGET_VERSION#refs/*/v} >> $GITHUB_ENV
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: resume.tex
     - name: Create release
+      id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v${{ env.TARGET_VERSION }}
         release_name: Release v${{ env.TARGET_VERSION }}
+    - name: Upload PDF release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: resume.pdf
+        asset_name: ${{ github.repository_owner }}-resume.pdf
+        asset_content_type: application/pdf

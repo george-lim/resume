@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{enumitem}
+\usepackage[empty]{fullpage}
+\usepackage[colorlinks,urlcolor=cyan]{hyperref}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+\pagestyle{empty}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1in}
+
+\raggedbottom{}
+\raggedright{}
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-4pt}]
+
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2\vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1}&#2 \\
+      \textit{\small#3}&\textit{\small#4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\begin{document}
+
+%----------------HEADER----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Large George Lim}&\href{mailto:lim.george@me.com}{lim.george@me.com} \\
+  \href{https://www.linkedin.com/in/george-lim}{linkedin.com/in/george-lim}&\href{https://george-lim.github.io}{george-lim.github.io} \\
+\end{tabular*}
+
+%---------------EDUCATION--------------
+\section{Education}
+  \resumeSubHeadingListStart{}
+    \resumeSubheading{University of Waterloo}{Waterloo, ON}{Bachelor of Computer Science, Honours, Co-operative Program, Philosophy Minor}{Sept 2016 \textendash{} Apr 2021}
+  \resumeSubHeadingListEnd{}
+
+%--------------EXPERIENCE--------------
+\section{Experience}
+  \resumeSubHeadingListStart{}
+    \resumeSubheading{McAfee, LLC (TunnelBear)}{Toronto, ON}{iOS and macOS Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-3b.pdf}{Outstanding Evaluation}}{Jan 2020 \textendash{} Apr 2020}
+      \resumeItemListStart{}
+        \resumeItem{Data Persistence}
+          {Developed a disk persistence framework that supports different crypts (AES256-CBC), serializers, and IO managers to persist models without UserDefaults or Core Data. Makes fallback API calls with Alamofire on disk load failure.}
+        \resumeItem{Analytics}
+          {Wrote analytics library with AppsFlyer and Kibana integration. Provides bulk processing analytics events, event caching, and client-server event upload synchronization.}
+        \resumeItem{State Monitoring}
+          {Replaced MirrorDiffKit with a custom logic that dynamically identifies state differences between objects. Allows logging Redux state changes. Bypasses Swift's static type nature using code generation via Sourcery framework.}
+        \resumeItem{Test-Driven Development}
+          {Wrote extensive unit tests for VPN connection queue, Keychain accessor, and Store + Actions (Redux) systems. Improved queue recovery logic and fixed logout issues caused by API Keychain token not deleting.}
+      \resumeItemListEnd{}
+
+    \resumeSubheading{McAfee, LLC (TunnelBear)}{Toronto, ON}{iOS Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-3a.pdf}{Outstanding Evaluation}}{May 2019 \textendash{} Aug 2019}
+      \resumeItemListStart{}
+        \resumeItem{Migrator}
+          {Rewrote app migrator to properly handle account and connection state transition for existing v2.x users.}
+        \resumeItem{Gateway}
+          {BlueBear is a fallback AWS gateway that enables VPN clients to connect to TunnelBear servers when the primary gateway is blocked by ISPs. Integrated BlueBear v2 into iOS client, with fallback connection performance optimizations.}
+        \resumeItem{Logging}
+          {Rewrote logging library in Swift, decoupling objective-zip dependency. Uses CocoaLumberjackLogger, with support for dependency injection and sending logs using multi-part form data requests.}
+        \resumeItem{Cryptography}
+          {Built \href{https://github.com/george-lim/envelope}{Envelope}, an open-source hybrid cryptosystem that encrypts files using different symmetric and public-key ciphers. Supports AES256-CBC and RSA-2048. Used to secure logs in fallback log upload system.}
+        \resumeItem{App Ratings}
+          {Implemented custom app rating framework to replace deprecated ``iRate'' dependency.}
+        \resumeItem{Connection Improvements}
+          {Removed redundancies in reachability logic which decreased time to resolve connection errors by 50\%. Fixed a critical bug which spammed analytics endpoint on every app state change.}
+      \resumeItemListEnd{}
+
+    \resumeSubheading{Bunch}{Manhattan, NY}{Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-2b.pdf}{Outstanding Evaluation}}{Sept 2018 \textendash{} Dec 2018}
+      \resumeItemListStart{}
+        \resumeItem{Camera SDK}
+          {Developed an improved camera layout system in React Native that allows developers to easily add camera position animations and transitions for each lobby participant. Used to animate cameras as members join or leave a lobby.}
+        \resumeItem{CallKit}
+          {Integrated CallKit as a proof of concept way to join a game lobby with friends from outside the app.}
+        \resumeItem{UI Components}
+          {Created DynamicPopup and DynamicModal, two custom React Native ScrollView components with multiple rest states and the ability to support sticky headers and footers. Used in every notification UI popup.}
+      \resumeItemListEnd{}
+
+    \resumeSubheading{TunnelBear}{Toronto, ON}{iOS Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-2a.pdf}{Outstanding Evaluation}}{Jan 2018 \textendash{} Apr 2018}
+      \resumeItemListStart{}
+        \resumeItem{TBMapKit}
+          {Developed TBMapKit, a CocoaPods MapKit framework for iOS and macOS that increases map render speeds by selectively caching and rendering map regions. Refactored TunnelBear's tunnel animation framework into TBMapKit.}
+        \resumeItem{BlockBear}
+          {Optimized time to import and process website block list. Fixed font blocking feature, migrated app to Swift 4.}
+        \resumeItem{Rate Limiting (Captcha)}
+          {Discovered a solution to WKWebView's bug of blocking cookies on first connection, which fixed CloudFlare cookie verification. Unblocked and shipped the rate-limiting feature to iOS.}
+        \resumeItem{Refactor}
+          {Refactored TBMainViewController consisting of 3000+ lines of Objective-C code into four Swift controllers.}
+        \resumeItem{Payment System}
+          {Integrated Apple's free trial subscription model, involving onboarding UI and payment system upgrades.}
+      \resumeItemListEnd{}
+
+    \resumeSubheading{Z1}{Toronto, ON}{Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-1b.pdf}{Outstanding Evaluation}}{Jan 2018 \textendash{} Apr 2018}
+      \resumeItemListStart{}
+        \resumeItem{Signal Processing}
+          {Optimized RxSwift signal funnel when parsing calendar event data from Realm, reducing amount of debounced asynchronous signals by over 5x.}
+        \resumeItem{Zoom}
+          {Integrated Zoom's MobileRTC stack, allowing users to make Zoom conference calls directly from a calendar event.}
+        \resumeItem{Calendar Widget}
+          {Wrote a shared library for today extension widget and rich notifications, using Stevia and Bonmot frameworks to create dynamic UI layouts for each calendar event type.}
+      \resumeItemListEnd{}
+  \resumeSubHeadingListEnd{}
+
+%-------------PUBLICATIONS-------------
+\section{Publications}
+  \resumeSubHeadingListStart{}
+    \resumeSubItem{\href{https://itunes.apple.com/ca/app/spikeful/id1265332106}{Spikeful}}
+      {An accelerometer-based iOS game made using SpriteKit designed to compete against Ketchapp.}
+    \resumeSubItem{\href{https://play.google.com/store/apps/details?id=com.bruno.android}{Bruno}}
+      {An Android music discovery fitness app that turns your playlist into a fitness partner that competes against you.}
+    \resumeSubItem{\href{https://github.com/george-lim/nephele}{Nephele}}
+      {An AWS serverless application written in Python that hosts George's cloud-compatible side projects.}
+    \resumeSubItem{\href{https://hub.docker.com/repository/docker/georgelim/firefox-lambda}{Firefox Lambda}}
+      {A Lambda container image for Docker that builds a Playwright-patched version of Firefox.}
+  \resumeSubHeadingListEnd{}
+
+\end{document}
