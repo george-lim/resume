@@ -23,6 +23,10 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule\vspace{-4pt}]
 
+\newcommand{\resumeProject}[1]{\small{\textbf{#1}{:}}}
+\newcommand{\resumeProjectWithDescription}[2]{\small{\textbf{#1}{: #2\vspace{-2pt}}}}
+\newcommand{\resumeProjectItem}[1]{\item\small{{#1}}}
+
 \newcommand{\resumeItem}[2]{
   \item\small{
     \textbf{#1}{: #2\vspace{-2pt}}
@@ -34,13 +38,13 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1}&#2 \\
       \textit{\small#3}&\textit{\small#4} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}
 }
 
 \newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\vspace{-4pt}\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
 
 \renewcommand{\labelitemii}{$\circ$}
@@ -62,6 +66,68 @@
 %--------------EXPERIENCE--------------
 \section{Experience}
   \resumeSubHeadingListStart{}
+    \resumeSubheading{Bunch}{Manhattan, NY}{Senior Software Engineer}{Jan 2022 \textendash{} Present}
+      \resumeProject{Bunch Unicorn}
+      \resumeItemListStart{}
+        \resumeProjectItem{Implemented UI + P2P synchronization logic for watching YouTube together in a party.}
+        \resumeProjectItem{Lead the clubs project, which allows up to 50 people to join a club and chat. Worked on club creation + deletion flows, club presence, club roles, club chat, push and in-app notifications, analytics.}
+        \resumeProjectItem{Worked on status profile customizations (weather, emote, pose).}
+        \resumeProjectItem{Added AI avatar generation through text (dictation), selfie, gallery upload, Bitmoji.}
+        \resumeProjectItem{Implemented games tab and catalog, including search and all related screens to select and launch into a game from a party. Created app installation scanner and tracker on both platforms to suggest games.}
+        \resumeProjectItem{Implemented space tab, including search, recent spaces, joining party by code. Includes gRPC API, repository, view model, view, caches.}
+        \resumeProjectItem{Added batch DB writes to improve search performance.}
+        \resumeProjectItem{Added temporary and permanent ban logic as part of toxicity model.}
+        \resumeProjectItem{Created in-app review flow for iOS and Android.}
+        \resumeProjectItem{Built expanded and minimized video overlay + party controls.}
+        \resumeProjectItem{Built parental controls system to control various actions kids can take in Bunch.}
+        \resumeProjectItem{Created a PoC to update Bunchie status and pose based on live status update from Discord and Line.}
+      \resumeItemListEnd{}
+      \resumeProjectWithDescription{Bunch Game SDK}{Lead the iOS SDK that provided voice and video chat integration with games, used by Miniclip.}
+      \resumeItemListStart{}
+        \resumeProjectItem{Designed every layer, including API, persistence, repository, view model, UI.}
+        \resumeProjectItem{Added 70\% test coverage for all relevant business logic.}
+        \resumeProjectItem{Added programmatic controls for video bubble, and expandable / collapsable state.}
+        \resumeProjectItem{Implemented Session handover between SDK and Unicorn app.}
+        \resumeProjectItem{Added automatic party restoration in boot path.}
+        \resumeProjectItem{Wrote extensive sample app for testing out all SDK features.}
+        \resumeProjectItem{Built presence system to notify friends when user is playing the game.}
+      \resumeItemListEnd{}
+      \resumeProjectWithDescription{Bunch iOS Widget}{Lead the widget extension project to view friend statuses from home screen.}
+      \resumeItemListStart{}
+        \resumeProjectItem{Added all networking logic (retrier, auth), custom SwiftUI components.}
+      \resumeItemListEnd{}
+
+    \resumeSubheading{Bunch}{Manhattan, NY}{Software Engineer}{Feb 2021 \textendash{} Jan 2022}
+      \resumeProject{Bunch Presence SDK}
+      \resumeItemListStart{}
+        \resumeProjectItem{Implemented the iOS UI + KMM business logic for most of the presence matrix between the user and a friend, handling the following combinations: online / offline, alone vs in a party, public vs private party, full party.}
+        \resumeProjectItem{Refactored business logic out many existing friend list views and into KMM view models, conforming to MVVM. Increased testability across iOS and Android by leveraging JUnit and Mockk for view model tests.}
+        \resumeProjectItem{Introduced UserDefaults to the SDK for persisting configuration options, and Keychain for storing auth credentials.}
+        \resumeProjectItem{Rewrote existing event bus architecture:}
+        \resumeItemListStart{}
+          \resumeProjectItem{Fixed retention cycle issues due to events having reference to queue.}
+          \resumeProjectItem{Implemented event logger as event observer.}
+        \resumeItemListEnd{}
+        \resumeProjectItem{Set up CI/CD pipeline with BitRise, with automated notifications to Slack.}
+        \resumeProjectItem{Added various in-app and push notifications like friend online, friend requested, friend added, etc.}
+      \resumeItemListEnd{}
+      \resumeProjectWithDescription{Bunch Palette}{Lead the project to create a CocoaPod for Atomic Design based design system.}
+      \resumeItemListStart{}
+        \resumeProjectItem{Allows testing components in isolation, rapidly iterating without compiling KMM.}
+        \resumeProjectItem{Supports dark mode, standardizes constraint spacing, colors, fonts, etc.}
+        \resumeProjectItem{Has both SwiftUI and UIKit support, with SwiftUI extensions to bridge to KMM flows.}
+        \resumeProjectItem{Used to prototype party overlay with dynamic video feed layout.}
+      \resumeItemListEnd{}
+      \resumeProject{Bunch Unicorn}
+      \resumeItemListStart{}
+        \resumeProjectItem{Implemented the original onboarding flow, with support for Apple login, phone number auth, Facebook auth, and Snap login\@. Supports Firebase deferred deep link for express onboarding.}
+        \resumeProjectItem{Added friends list feature, which includes ranking, search, presence session events, profile page, suggested friends, caching for search results.}
+      \resumeItemListEnd{}
+      \resumeProjectWithDescription{Bunch Chromecast Extension}
+        {Allows friends to play games on their devices, while having the party's video streams displayed on the TV similar to Jackbox.TV.}
+      \resumeProjectWithDescription{Ethereum Wallet Connect}
+        {Built as an internal hackathon project, allows users to connect their Ethereum wallets to Bunch so that we can read transactions into Bunch avatar clothing.}
+
     \resumeSubheading{McAfee, LLC (TunnelBear)}{Toronto, ON}{iOS and macOS Software Engineer; \href{https://george-lim.github.io/evaluations/evaluation-3b.pdf}{Outstanding Evaluation}}{Jan 2020 \textendash{} Apr 2020}
       \resumeItemListStart{}
         \resumeItem{Data Persistence}
@@ -132,10 +198,20 @@
       {A progressive web app written in Rust + WebAssembly that lets users watch anime and read manga online with friends.}
     \resumeSubItem{\href{https://t.me/WealthsimpleBot}{Wealthsimple Bot}}
       {A Telegram bot written in Rust + WebAssembly that manages Wealthsimple Trade accounts and orders.}
+    \resumeSubItem{\href{https://github.com/george-lim/aer-world}{AER World}}
+      {A game state container designed to model games where entities can react to actions by spawning more actions.}
+    \resumeSubItem{\href{https://cocoapods.org/pods/envelope}{Envelope}}
+      {OpenSSL-compatible file encryption in Swift.}
+    \resumeSubItem{\href{https://github.com/george-lim/nephele}{Nephele}}
+      {An AWS serverless application written in Python that hosts George's cloud-compatible side projects.}
     \resumeSubItem{\href{https://appadvice.com/app/spikeful/1265332106}{Spikeful}}
       {An accelerometer-based iOS game made using SpriteKit designed to compete against Ketchapp.}
     \resumeSubItem{\href{https://play.google.com/store/apps/details?id=com.bruno.android}{Bruno}}
       {An Android music discovery fitness app that turns your playlist into a fitness partner that competes against you.}
+    \resumeSubItem{\href{https://appadvice.com/app/dialer/1266511331}{Dialer}}
+      {A super fast Zoom conferencing tool on iOS.}
+    \resumeSubItem{\href{https://appadvice.com/app/traffic-pal/1265505042}{Traffic Pal}}
+      {A traffic simulation tool developed for CARS Education on iOS.}
   \resumeSubHeadingListEnd{}
 
 \end{document}

@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -8,32 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: Run linter
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Run linter
-      uses: github/super-linter@v4.9.2
-      env:
-        VALIDATE_ALL_CODEBASE: false
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
-    - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: resume.tex
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: Resume
-        path: resume.pdf
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resume
+          path: resume.pdf
